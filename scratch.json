@@ -1,0 +1,65 @@
+{
+  "nameDevice": "CloudDevices",
+  "operationCreaate": "I.addCloudDatacentre",
+  "members": [
+    {
+      "name": "Cloud_1",
+      "type": "CloudCentre",
+      "software": ["mySQL",".NET","C++"],
+      "x": 12.12,
+      "y": 11.23
+    },
+    {
+      "name": "Cloud_2",
+      "type": "CloudCentre",
+      "software": ["spark","linux","ruby"],
+      "x": 44.123896,
+      "y": -122.781555
+    },
+    {
+      "name":"fog_3",
+      "type": "fogNode",
+      "software": ["python","C++"],
+      "hardware": {
+        "cores": 0,
+        "ram": 2,
+        "storage": 0
+      },
+      "x": 12333.12,
+      "y": 1231.122
+    },
+    {
+      "name": "fog_1",
+      "type": "fogNode",
+      "software": ["python","C++"],
+      "hardware":{
+        "cores": 0,
+        "ram": 4,
+        "storage": 0
+      },
+      "x": 23312.22,
+      "y": 1333.21
+    },
+    {
+      "type":"link",
+      "source": "fog_1",
+      "target": "fog_2",
+      "latency": 1,
+      "bandwidth": 100
+    },
+    {
+      "type":"link",
+      "source": "fog_1",
+      "target": "fog_3",
+      "latency": 5,
+      "bandwidth": 20
+    },
+    {
+      "type":"things",
+      "name": "videocamera0",
+      "typeDevice": "videocamera",
+      "x": 43.78882,
+      "y": 10.12333
+    }
+  ]
+}
