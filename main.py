@@ -1,19 +1,22 @@
 from fileManager import fileManager
 import json
 
+name = ""
 
-def CreatemainFile():
-    fileNameMain=input("Entry file Main:")
-    FMMain = fileManager(fileNameMain)
+def CreatemainFile(nameProduct):
+    FMName = nameProduct+"Example"
+    FMMain = fileManager(FMName,nameProduct)
     FMMain.javaClassGen()
-
-def CreateInfrastructure():
-    fileNameInf = input("Entry fileName Infrastructure:")
-    FMInfrastructure = fileManager(fileNameInf)
+    FMMain.addMainFile()
+def CreateInfrastructure(nameProduct):
+    fileNameInf = nameProduct+"Infrastructure"
+    FMInfrastructure = fileManager(fileNameInf,nameProduct)
     FMInfrastructure.javaClassGen()
     jsonFile = open('scratch.json')
     dataStore = json.load(jsonFile)
     FMInfrastructure.addInfrastructure(dataStore)
 
 if __name__ == "__main__":
-    CreateInfrastructure()
+    nameProduct = input("Entry file name (Recommended few characters):")
+    CreateInfrastructure(nameProduct)
+    CreatemainFile(nameProduct)

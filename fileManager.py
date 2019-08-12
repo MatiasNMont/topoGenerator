@@ -1,13 +1,30 @@
 
+
 class fileManager():
 
-    def __init__(self,fileName):
+    def __init__(self,fileName,shortName):
         self.className = fileName
+        self.shortName = shortName
         self.fileName = fileName+".java"
         self.javaFile = None
 
     def javaClassGen(self):
-        self.javaFile = open(self.fileName, "w+")
+        self.javaFile = open(self.fileName, 'w')
+        self.javaFile.write("/* * \n AUTHOR MATIAS MONTIVERO \n ** */\n")
+
+
+    def addMainFile(self):
+        self.fileName = open(self.fileName,'a')
+        self.javaFile.write("import package;\n\nimport java.util.ArrayList;\nimport fogtorch.deployment.Search;\nimport static java.util.Arrays.asList;\nimport fogtorch.application.Application;\nimport fogtorch.application.ExactThing;\nimport fogtorch.application.ThingRequirement;\nimport fogtorch.infrastructure.Infrastructure;\nimport fogtorch.utils.QoSProfile;\n\n\n\n")
+        self.javaFile.write("public class "+ self.className+" {\n\n\n\n ")
+        self.javaFile.write("\t\tpublic Search start(){\n")
+        self.javaFile.write("\t\t\tApplication A = "+self.shortName+"Application.createAppication();\n")
+        self.javaFile.write("\t\t\tInfrastructure I = "+self.shortName+"Infrastructure.createInfrastructure();\n")
+        self.javaFile.write("\t\t\tSearch s = new Search(A,I);\n")
+        self.javaFile.write("\t\t\ts.addBusinessPolicies(\"mlengine\", asList(\"cloud_2\", \"cloud_1\"));\n")
+        self.javaFile.write("\t\t\ts.findDeployments(true);\n")
+        self.javaFile.write("\t\t\treturn s;\n\t\t}\n\t}")
+        self.javaFile.close()
 
     def addInfrastructure(self,dataJSON):
 
