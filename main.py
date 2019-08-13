@@ -15,8 +15,13 @@ def CreateInfrastructure(nameProduct):
     jsonFile = open('scratch.json')
     dataStore = json.load(jsonFile)
     FMInfrastructure.addInfrastructure(dataStore)
-
+def CreateAppFile(nameProduct):
+    fileNameApp = nameProduct+"Application"
+    FMApplication = fileManager(fileNameApp,nameProduct)
+    FMApplication.javaClassGen()
+    FMApplication.addAplication("ligth")
 if __name__ == "__main__":
     nameProduct = input("Entry file name (Recommended few characters):")
     CreateInfrastructure(nameProduct)
     CreatemainFile(nameProduct)
+    CreateAppFile(nameProduct)

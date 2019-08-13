@@ -15,7 +15,7 @@ class fileManager():
 
     def addMainFile(self):
         self.fileName = open(self.fileName,'a')
-        self.javaFile.write("import package;\n\nimport java.util.ArrayList;\nimport fogtorch.deployment.Search;\nimport static java.util.Arrays.asList;\nimport fogtorch.application.Application;\nimport fogtorch.application.ExactThing;\nimport fogtorch.application.ThingRequirement;\nimport fogtorch.infrastructure.Infrastructure;\nimport fogtorch.utils.QoSProfile;\n\n\n\n")
+        self.javaFile.write("package examples;\n\nimport java.util.ArrayList;\nimport fogtorch.deployment.Search;\nimport static java.util.Arrays.asList;\nimport fogtorch.application.Application;\nimport fogtorch.application.ExactThing;\nimport fogtorch.application.ThingRequirement;\nimport fogtorch.infrastructure.Infrastructure;\nimport fogtorch.utils.QoSProfile;\n\n\n\n")
         self.javaFile.write("public class "+ self.className+" {\n\n\n\n ")
         self.javaFile.write("\t\tpublic Search start(){\n")
         self.javaFile.write("\t\t\tApplication A = "+self.shortName+"Application.createAppication();\n")
@@ -26,6 +26,16 @@ class fileManager():
         self.javaFile.write("\t\t\treturn s;\n\t\t}\n\t}")
         self.javaFile.close()
 
+    def addAplication(self,thingName):
+        self.fileName = open(self.fileName,'a')
+        self.javaFile.write("packages examples;\n")
+        self.javaFile.write("import fogtorch.application.Application;\nimport fogtorch.application.ExactThing;\nimport fogtorch.application.ThingRequirement;\nimport fogtorch.utils.Hardware;\nimport fogtorch.utils.QoSProfile;\nimport java.util.ArrayList;\nimport static java.util.Arrays.asList;\n")
+        self.javaFile.write("\n\n\npublic class "+self.className+"{\n\n")
+        self.javaFile.write("\t\tpublic static Application createApplication(){\n")
+        self.javaFile.write("\t\t\tApplication A = new Application();\n ")
+        self.javaFile.write("\t\t\tArrayList<ThingRequirement> "+thingName+" = new ArrayList<>();\n")
+        self.javaFile.write("\t\treturn A;\n\t}\n}")
+        self.javaFile.close()
     def addInfrastructure(self,dataJSON):
 
         print("Writing Infraestructure")
